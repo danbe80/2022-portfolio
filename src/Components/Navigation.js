@@ -1,11 +1,10 @@
 import { motion } from "framer-motion";
 import React from "react";
-import { useState } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 const Header = styled.header`
-  width: 100vw;
+  width: 100%;
   padding-top: 25px;
 `;
 const Navi = styled.nav`
