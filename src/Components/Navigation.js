@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import React from "react";
 import { useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
@@ -16,7 +17,7 @@ const Items = styled.ul`
   align-items: center;
   text-align: center;
 `;
-const Item = styled.li`
+const Item = styled(motion.li)`
   width: 23%;
   cursor: pointer;
   a {

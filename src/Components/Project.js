@@ -1,83 +1,89 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import { motion } from "framer-motion";
+import ProjectBox from "./ProjectBox";
 
-const Wrapper = styled.div`
-  max-width: 2000px;
-  margin: auto;
-`;
+const Wrapper = styled.div``;
 const ProjectWrap = styled.div`
   width: 100%;
 `;
 const ProjectList = styled.ul`
-  width: 100%;
+  width: 800px;
+  height: 60px;
+  margin: 60px auto;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 35px;
+  text-align: center;
+  color: #666;
 `;
 const Item = styled.li`
-  margin-top: 80px;
+  width: 33.3333%;
+  padding: 10px;
+  border-bottom: 1px solid rgba(108, 92, 231, 0);
+  position: relative;
 `;
-const Logo = styled.div`
-  width: 400px;
-  height: 400px;
-  background: url("img/danflix-logo.png");
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-color: black;
-  border-radius: 15px;
+const Line = styled(motion.div)`
+  width: 100%;
+  height: 3px;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(108, 92, 231, 0.5);
+  position: absolute;
 `;
-const ButWrap = styled.div`
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin-top: 30px;
-  button {
-    width: 25%;
-    font-size: 18px;
-    background-color: transparent;
-    border: 1px solid #6c5ce7;
-    padding: 5px 15px;
-    border-radius: 3px;
-    &:hover {
-      background-color: #6c5ce7;
-      color: #f1f1f1;
-      transition: all ease-in-out 0.3s;
-    }
-  }
-`;
-const ProjectMain = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-const DetailBox = styled.div``;
-const Explain = styled.p``;
-const Skils = styled.ul``;
-
-const GithubBtn = styled.button``;
-const DemoBtn = styled.button``;
 const Project = () => {
+  const [seletedProject, setSeletedProject] = useState("DOIT");
+  const onClick = (data) => {
+    const name = data.target.innerText;
+    setSeletedProject(name);
+  };
   return (
     <Wrapper>
       <ProjectWrap>
         <ProjectList>
-          <Item>
-            <ProjectMain>
-              <Logo />
-              <DetailBox>
-                <Explain>
-                  이 프로젝트는 NETFLIX를 Clone Coding한 사이트입니다.
-                </Explain>
-                <Skils></Skils>
-              </DetailBox>
-            </ProjectMain>
-
-            <ButWrap>
-              <GithubBtn>GITHUB</GithubBtn>
-              <DemoBtn>DEMO</DemoBtn>
-            </ButWrap>
+          <Item onClick={onClick}>
+            DOIT{seletedProject === "DOIT" && <Line layoutId="line" />}
+          </Item>
+          <Item onClick={onClick}>
+            YELL{seletedProject === "YELL" && <Line layoutId="line" />}
+          </Item>
+          <Item onClick={onClick}>
+            DANFLIX
+            {seletedProject === "DANFLIX" && <Line layoutId="line" />}
           </Item>
         </ProjectList>
+        {seletedProject === "DOIT" && (
+          <ProjectBox
+            photo="/img/전체기능-수정.gif"
+            explain="이 프로젝트는 순수 자바스크립트로 제작되었습니다. 
+            CANVAS API와 Weather API를 사용하여 그림판과 날씨 기능을 구현하였습니다. "
+            skills={["HTML", "CSS", "JavaScript"]}
+            git="https://github.com/danbe80/doit.github.io"
+            demo="https://danbe80.github.io/doit.github.io/"
+          />
+        )}
+        {seletedProject === "YELL" && (
+          <ProjectBox
+            photo="/img/yell.gif"
+            explain="이 프로젝트는 React로 제작되었습니다.
+          react-beautiful-dnd 라이브러리를 이용해 Trello 클론 코딩한 Kanvan App입니다."
+            skills={["React", "TypeScript"]}
+            git="https://github.com/danbe80/yell-app"
+            demo="https://danbe80.github.io/yell-app/"
+          />
+        )}
+
+        {seletedProject === "DANFLIX" && (
+          <ProjectBox
+            photo="/img/danflix-logo.png"
+            explain="이 프로젝트는 React로 제작되었습니다.
+            Firebase Auth로 이용해 간단한 회원가입을 구현하였습니다."
+            skills={["React", "TypeScript", "Firebase"]}
+            git="https://github.com/danbe80/re-danflix"
+            demo="https://danflix-aed3e.web.app/"
+          />
+        )}
       </ProjectWrap>
     </Wrapper>
   );
