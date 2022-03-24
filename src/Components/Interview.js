@@ -1,18 +1,40 @@
 import { motion } from "framer-motion";
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import { BsX } from "react-icons/bs";
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  position: relative;
+`;
+const Notice = styled.span`
+  position: absolute;
+  top: 5px;
+  left: 10px;
+  right: 10px;
+  margin: auto;
+  background-color: #f1f1f1;
+  box-shadow: 0 0 15px 2px #95afc0;
+  text-align: center;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #c0392b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  svg {
+    color: #111;
+    margin-right: 10px;
+    padding: 5px;
+    cursor: pointer;
+  }
+`;
 const InterViewWrap = styled.div`
   width: 750px;
   margin: auto;
   display: flex;
   flex-direction: column;
 `;
-const FirstQ = styled.div``;
-const SecondQ = styled.div``;
-const ThirdQ = styled.div``;
-const FourQ = styled.div``;
 const QWrap = styled(motion.div)`
   padding: 40px;
   line-height: 1.5;
@@ -28,9 +50,20 @@ const Anwser = styled.p`
 `;
 
 const Interview = () => {
+  const [cancel, setCancel] = useState(true);
+  const onCancel = () => {
+    setCancel(false);
+  };
   return (
     <Wrapper>
       <InterViewWrap>
+        {cancel ? (
+          <Notice>
+            <BsX onClick={onCancel} />
+            🔔 알립니다. Interview chapter는 기자와의 Interview 하는 컨셉으로
+            잡았습니다.
+          </Notice>
+        ) : null}
         <QWrap
           animate={{ opacity: 1 }}
           initial={{ opacity: 0 }}
