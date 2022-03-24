@@ -1,4 +1,5 @@
-import React from "react";
+import { motion } from "framer-motion";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 const Wrapper = styled.div``;
@@ -9,30 +10,24 @@ const ContactWrap = styled.ul`
   justify-content: center;
   align-items: center;
   margin-top: 40px;
+  font-weight: bold;
 `;
 const Photo = styled.li`
   width: 250px;
   height: 250px;
   border-radius: 50%;
+  border: 3px solid rgb(108, 92, 231);
+  margin: 15px 0;
   background: url("/img/contactphoto.jpg");
   background-repeat: no-repeat;
   background-size: 110%;
   background-position: center;
-  border: 3px solid rgb(108, 92, 231);
-  margin: 15px 0;
 `;
 const PhoneNum = styled.li`
   margin: 5px 0;
 `;
 const Email = styled.li`
   margin: 5px 0;
-`;
-const Git = styled.button`
-  margin: 5px 0;
-  cursor: pointer;
-  &:hover {
-    color: rgb(108, 92, 231);
-  }
 `;
 
 const Contact = () => {
