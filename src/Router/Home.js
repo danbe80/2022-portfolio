@@ -1,6 +1,13 @@
 import { motion } from "framer-motion";
 import React, { useState } from "react";
 import styled from "styled-components";
+import leehyerin from "../assets/img/leehyerin.jpg";
+import html from "../assets/img/skills/html5.png";
+import css from "../assets/img/skills/css3.png";
+import js from "../assets/img/skills/javascript.png";
+import ts from "../assets/img/skills/typescript.png";
+import react from "../assets/img/skills/react.png";
+import firebase from "../assets/img/skills/firebase.png";
 
 const Wrapper = styled.div`
   max-width: 2000px;
@@ -12,8 +19,11 @@ const MainWrap = styled.main`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  padding: 50px 0 100px 0;
+  padding: 50px;
   position: relative;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 const SelfText = styled.div`
   display: flex;
@@ -93,9 +103,11 @@ const Img = styled.div`
   height: 400px;
   border-radius: 50% 65% 50% 43%;
   background-color: transparent;
-  background-image: url("img/leehyerin.jpg");
+  background-image: url(${leehyerin});
   background-size: cover;
 `;
+
+// modal
 const Overlay = styled(motion.div)`
   background-color: rgba(0, 0, 0, 0.7);
   width: 100%;
@@ -137,10 +149,6 @@ const ModalPhoto = styled.div`
   width: 350px;
   height: 400px;
   position: absolute;
-  background-image: url("/img/Home.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 100%;
   opacity: 0.3;
   top: -30px;
   right: -50px;
@@ -161,22 +169,22 @@ const Skills = styled.div`
   }
 `;
 const Html = styled.div`
-  background-image: url("/img/skills/html5.png");
+  background-image: url(${html});
 `;
 const Css = styled.div`
-  background-image: url("/img/skills/css3.png");
+  background-image: url(${css});
 `;
 const JavaScript = styled.div`
-  background-image: url("/img/skills/javascript.png");
+  background-image: url(${js});
 `;
 const TypeScript = styled.div`
-  background-image: url("/img/skills/typescript.png");
+  background-image: url(${ts});
 `;
 const ReactJs = styled.div`
-  background-image: url("/img/skills/react.png");
+  background-image: url(${react});
 `;
 const Firebase = styled.div`
-  background-image: url("/img/skills/firebase.png");
+  background-image: url(${firebase});
 `;
 const EducationWrap = styled.div``;
 const Education = styled.div`
@@ -224,7 +232,7 @@ const Home = () => {
             <Name>이혜린(LeeHyeRin) </Name>
             <Age>1997. 03. 16 (만 25세)</Age>
             <School>한신대학교 정보통신학부 2021.02 졸업</School>
-            <Hobby>취미: 노래, 게임, 영화, 보드</Hobby>
+            <Hobby>취미: 노래, 게임, 영화, 보드, 전시회</Hobby>
           </Text>
         </SelfText>
         <ImgWrap>

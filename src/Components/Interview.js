@@ -4,16 +4,16 @@ import styled from "styled-components";
 import { BsX } from "react-icons/bs";
 
 const Wrapper = styled.div`
+  width: 100%;
   position: relative;
 `;
-const Notice = styled.span`
-  position: absolute;
-  top: 5px;
-  left: 10px;
-  right: 10px;
-  margin: auto;
+const Notice = styled.div`
+  position: fixed;
+  left: 50%;
+  bottom: 10px;
+  transform: translate(-50%, -50%);
   background-color: #f1f1f1;
-  box-shadow: 0 0 15px 2px #95afc0;
+  box-shadow: 0 0 10px 1px #95afc0;
   text-align: center;
   padding: 5px;
   border-radius: 5px;
@@ -21,19 +21,30 @@ const Notice = styled.span`
   color: #c0392b;
   display: flex;
   align-items: center;
-  justify-content: center;
   svg {
     color: #111;
     margin-right: 10px;
     padding: 5px;
     cursor: pointer;
   }
+  @media (max-width: 769px) {
+    svg {
+      margin-right: 0;
+    }
+    @media (max-width: 426px) {
+      width: 80%;
+      margin: auto;
+    }
+  }
 `;
 const InterViewWrap = styled.div`
-  width: 750px;
+  width: 80%;
   margin: auto;
   display: flex;
   flex-direction: column;
+  @media (max-width: 769px) {
+    width: 100%;
+  }
 `;
 const QWrap = styled(motion.div)`
   padding: 40px;
@@ -45,9 +56,7 @@ const Q = styled.span`
   letter-spacing: -1px;
   line-height: 2;
 `;
-const Anwser = styled.p`
-  letter-spacing: -1px;
-`;
+const Anwser = styled.p``;
 
 const Interview = () => {
   const [cancel, setCancel] = useState(true);
@@ -60,8 +69,7 @@ const Interview = () => {
         {cancel ? (
           <Notice>
             <BsX onClick={onCancel} />
-            🔔 알립니다. Interview chapter는 기자와의 Interview 하는 컨셉으로
-            잡았습니다.
+            <span>🔔 기자와의 Interview하는 컨셉으로 잡았습니다.</span>
           </Notice>
         ) : null}
         <QWrap
@@ -79,7 +87,7 @@ const Interview = () => {
             수정하고 구글링을 해가며 해결방안을 찾고 어떤 형식의 UI/UX가 좋은지
             사용자 입장에서 생각하면서 개발을 진행했어요. 저도 모르게 말입니다.
             그런 저의 모습을 본 팀원분이 개발자를 해보지 않겠냐는 제안을 하게
-            되었고, 졸업 논무이 끝난 뒤 제 취미와 연관된 웹 프론트엔드 개발자를
+            되었고, 졸업 논문이 끝난 뒤 제 취미와 연관된 웹 프론트엔드 개발자를
             지원하게 되었습니다.
           </Anwser>
         </QWrap>
@@ -88,7 +96,7 @@ const Interview = () => {
           initial={{ opacity: 0 }}
           transition={{ duration: 4 }}
         >
-          <Q>2. 어떤 취미를 가졌길래 웹 프론트라는 꿈을 가지게 된거죠?</Q>
+          <Q>2. 어떤 취미를 가진거죠?</Q>
           <Anwser>
             제가 좀 특이한 취미를 가졌는데 저는 게임을 정말 좋아하는 유저입니다.
             물론 모바일게임, 웹게임, 스팀게임 등등 장르 안가리고 좋아하는

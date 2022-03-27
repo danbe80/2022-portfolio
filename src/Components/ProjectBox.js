@@ -9,6 +9,9 @@ const TopWrap = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 const LogoWrap = styled.div`
   width: 400px;
@@ -16,6 +19,10 @@ const LogoWrap = styled.div`
   margin-right: 20px;
   background-color: #111;
   border-radius: 15px;
+  @media (max-width: 768px) {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
 `;
 const Logo = styled.div`
   width: 100%;
@@ -33,6 +40,10 @@ const Explain = styled.p`
   font-size: 18px;
   line-height: 1.5;
   word-wrap: break-word;
+  @media (max-width: 426px) {
+    width: 300px;
+    margin: auto;
+  }
 `;
 const Skills = styled.ul`
   margin-top: 40px;

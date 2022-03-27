@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import React, { useState } from "react";
 import styled from "styled-components";
+import profile from "../assets/img/contactphoto.jpg";
 
 const Wrapper = styled.div``;
 const Self = styled.span``;
@@ -9,7 +10,7 @@ const ContactWrap = styled.ul`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 40px;
+  margin-top: 140px;
   font-weight: bold;
 `;
 const Photo = styled.li`
@@ -18,7 +19,7 @@ const Photo = styled.li`
   border-radius: 50%;
   border: 3px solid rgb(108, 92, 231);
   margin: 15px 0;
-  background: url("/img/contactphoto.jpg");
+  background: url(${profile});
   background-repeat: no-repeat;
   background-size: 110%;
   background-position: center;

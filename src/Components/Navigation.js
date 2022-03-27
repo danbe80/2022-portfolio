@@ -1,11 +1,16 @@
 import { motion } from "framer-motion";
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
+import { FaBars } from "react-icons/fa";
 
 const Header = styled.header`
   width: 100%;
   padding-top: 25px;
+  position: relative;
+  @media (max-width: 768px) {
+    padding: 0;
+  }
 `;
 const Navi = styled.nav`
   color: black;
@@ -15,6 +20,50 @@ const Items = styled.ul`
   justify-content: center;
   align-items: center;
   text-align: center;
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
+const RNaviIcon = styled.div`
+  display: none;
+  position: relative;
+  @media (max-width: 768px) {
+    display: inline;
+  }
+  svg {
+    padding: 10px;
+    &:hover {
+      background-color: rgba(108, 92, 231, 0.5);
+      color: #f1f1f1;
+    }
+  }
+`;
+const RNavi = styled.ul`
+  display: none;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  margin-top: 36px;
+  z-index: 2;
+  text-align: center;
+  line-height: 2;
+  background-color: rgba(255, 255, 255, 0.9);
+  @media (max-width: 768px) {
+    display: block;
+  }
+`;
+const RItem = styled.li`
+  a {
+    display: block;
+    color: #111;
+    text-decoration: none;
+    padding: 5px 0;
+    &:hover {
+      background-color: rgba(108, 92, 231, 0.5);
+      color: #f1f1f1;
+      font-weight: bold;
+    }
+  }
 `;
 const Item = styled(motion.li)`
   width: 23%;
@@ -48,6 +97,10 @@ const Item = styled(motion.li)`
 `;
 
 const Navigation = () => {
+  const [response, setResponse] = useState(false);
+  const onClick = () => {
+    setResponse((prev) => !prev);
+  };
   return (
     <Header>
       <Navi>
@@ -65,6 +118,25 @@ const Navigation = () => {
             <NavLink to="/contact">CONTACT</NavLink>
           </Item>
         </Items>
+        <RNaviIcon onClick={onClick}>
+          <FaBars />
+        </RNaviIcon>
+        {response ? (
+          <RNavi>
+            <RItem onClick={onClick}>
+              <NavLink to="/">HYERIN</NavLink>
+            </RItem>
+            <RItem onClick={onClick}>
+              <NavLink to="/project">PROJECT</NavLink>
+            </RItem>
+            <RItem onClick={onClick}>
+              <NavLink to="/interview">INTERVIEW</NavLink>
+            </RItem>
+            <RItem onClick={onClick}>
+              <NavLink to="/contact">CONTACT</NavLink>
+            </RItem>
+          </RNavi>
+        ) : null}
       </Navi>
     </Header>
   );
